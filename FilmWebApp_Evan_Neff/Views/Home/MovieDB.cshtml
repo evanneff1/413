@@ -1,0 +1,46 @@
+﻿@* This is the razor page for the database form. It uses asp-for tags to link this page to the Movie.cs controller. Really cool stuff *@
+
+@{
+    ViewData["Title"] = "Movie DB Form";
+}
+
+@model Movies
+<div class="text-center">
+    <h1 class="display-4">Fill out this form to add a movie to the Movie DB!</h1>
+    <br />
+<form method="post">
+    <label asp-for="Category">Category:</label>
+    <input asp-for="Category" />
+    <label asp-for ="Title">Title:</label>
+    <input asp-for="Title" />
+    <label asp-for="Year">Year:</label>
+    <input asp-for ="Year" />
+    <label asp-for="Director">Director:</label>
+    <input asp-for="Director" />
+    <label asp-for="Rating">Rating:</label>
+    <select asp-for="Rating">
+        <option value="g">G</option>
+        <option value="pg">PG</option>
+        <option value="pg13">PG-13</option>
+        <option value="r">R</option>
+    </select>
+    <label asp-for="IsEdited">Edited</label>
+    <select asp-for="IsEdited" class="form-control">
+        <option value="">Select an option</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <label asp-for="IsLent">Lent to:</label>
+    <select asp-for="IsLent" class="form-control">
+        <option value="">Select an option</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <label asp-for="Notes">Notes:</label>
+    <input asp-for="Notes" />
+    <br />
+    <button type="submit">Submit</button>
+
+</form>
+
+</div>
