@@ -1,0 +1,63 @@
+﻿@{
+    var categories = ViewBag.Category as List<Categories>;
+}
+
+@model List<Movies>
+
+<table class="table table-bordered">
+    <thead class="fw-bold">
+        <tr>
+@*             <td>Movie ID</td>
+ *@         <td>Title</td>
+            <td>Year</td>
+            <td>Category</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Copied to Plex</td>
+            <td>Lent To</td>
+            <td>Edited</td>
+            <td>Notes</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    @foreach (var x in Model){
+        <tbody>
+            <tr>
+@*             <td>@x.MovieID</td>
+ *@         <td>@x.Title</td>
+            <td>@x.Year</td>
+            <td>@(categories?.FirstOrDefault(c => c.CategoryId == x.CategoryID)?.Category ?? "No category")</td>
+            <td>@x.Director</td>
+            <td>@x.Rating</td>
+                <td>
+                    @{
+                        if (x.CopiedToPlex == 1)
+                        {
+                            <span>Yes</span>
+                        }
+                        else
+                        {
+                            <span>No</span>
+                        }
+                    }
+                </td>
+            <td>@x.LentTo</td>
+                <td>
+                    @{if (x.Edited == true)
+                        {
+                            <span>Yes</span>
+                        }
+                        else
+                        {
+                            <span>No</span>
+                        }
+                    }
+                </td>
+                <td>@x.Notes</td>
+            <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieID">Edit</a></td>
+            <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieID">Delete</a></td>
+            </tr>
+        </tbody>
+    }
+</table>

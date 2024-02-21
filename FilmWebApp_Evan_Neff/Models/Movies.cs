@@ -1,6 +1,7 @@
 ﻿//This is the contoller page for the database. It creates the Movies class which handles all of the values in the the database, setting which are required and which can be null. As well as setting the Notes string limit
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmWebApp_Evan_Neff.Models
 {
@@ -15,19 +16,23 @@ namespace FilmWebApp_Evan_Neff.Models
         [StringLength(25)]
         public string ? Notes { get; set; }
         [Required]
-        public string Category { get; set; }
+        [ForeignKey("CategoryID")]
+        public int CategoryID { get; set; }
         [Required]
-        public int Year { get; set; }
+        [Range(1800, 2100, ErrorMessage = "Please enter a valid year")]
+        public int Year { get; set; } = 0;
+        
+        public string ? Director { get; set; }
+
+
+        public string ? Rating { get; set; }
+
+
+        public string ? LentTo { get; set; }
         [Required]
-        public string Director { get; set; }
-
+        public bool Edited { get; set; }
         [Required]
-        public string Rating { get; set; }
-
-
-        public bool ? IsLent { get; set; }
-
-        public bool ? IsEdited { get; set; }
+        public int CopiedToPlex { get; set; }
 
 
 

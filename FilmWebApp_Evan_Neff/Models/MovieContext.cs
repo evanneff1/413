@@ -10,6 +10,8 @@ namespace FilmWebApp_Evan_Neff.Models
         {
         }
 
-        public DbSet<Movies> movies { get; set; }
+        public DbSet<Movies> Movies { get; set; }
+        public DbSet<Categories> Categories { get; set; }
+
     }
 }

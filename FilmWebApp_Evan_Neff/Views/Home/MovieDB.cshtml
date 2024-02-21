@@ -9,8 +9,15 @@
     <h1 class="display-4">Fill out this form to add a movie to the Movie DB!</h1>
     <br />
 <form method="post">
-    <label asp-for="Category">Category:</label>
-    <input asp-for="Category" />
+    <input type="hidden" asp-for="MovieID"/>
+    <label asp-for="CategoryID">Category:</label>
+    <select asp-for="CategoryID">
+        <option value="">Select a Category</option>
+            @foreach (Categories c in ViewBag.Category)
+            {
+                <option value="@c.CategoryId">@c.Category</option>
+            }
+    </select>
     <label asp-for ="Title">Title:</label>
     <input asp-for="Title" />
     <label asp-for="Year">Year:</label>
@@ -24,22 +31,20 @@
         <option value="pg13">PG-13</option>
         <option value="r">R</option>
     </select>
-    <label asp-for="IsEdited">Edited</label>
-    <select asp-for="IsEdited" class="form-control">
+    <label asp-for="Edited">Edited</label>
+    <select asp-for="Edited" class="form-control">
         <option value="">Select an option</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
-    <label asp-for="IsLent">Lent to:</label>
-    <select asp-for="IsLent" class="form-control">
-        <option value="">Select an option</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
+    <label asp-for="LentTo">Lent to:</label>
+    <input asp-for="LentTo" />
     <label asp-for="Notes">Notes:</label>
     <input asp-for="Notes" />
     <br />
     <button type="submit">Submit</button>
+
+    <div asp-validation-summary="All"></div>
 
 </form>
 
