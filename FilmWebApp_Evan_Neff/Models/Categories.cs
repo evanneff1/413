@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿//This is the page used for creating the connection between the Categories database and the app
+
+using System.ComponentModel.DataAnnotations;
 
 
 namespace FilmWebApp_Evan_Neff.Models

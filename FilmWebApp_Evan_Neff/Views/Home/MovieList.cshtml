@@ -1,5 +1,8 @@
-﻿@{
+﻿@* This is the razor page that displays all of the movies in the databse, using razor code to dyncamically query the databse*@
+
+@{
     var categories = ViewBag.Category as List<Categories>;
+    ViewData["Title"] = "All Movies";
 }
 
 @model List<Movies>
